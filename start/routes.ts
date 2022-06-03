@@ -24,4 +24,12 @@ Route.get('/', async ({ view }) => {
   return view.render('welcome')
 })
 
-Route.get('/posts/:id', 'PostsController.show')
+Route.get('/dashboard', async ({view}) => {
+  return view.render('dashboard');
+}).as('dashboard')
+
+Route.get('/login', 'AuthController.loginShow');
+Route.post('/loginProcess', 'AuthController.login');
+
+Route.get('/posts/:id', 'PostsController.show');
+Route.post('/posts', 'PostsController.store');

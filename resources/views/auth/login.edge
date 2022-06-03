@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Post!!</title>
+    <meta charset="utf8" />
+    <style>
+      .app {
+        padding: 10px;
+        background: #888;
+        color: #fff;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <form action="/loginProcess" method="POST">
+      <div class="app">
+        <div class="row">
+          <label for="email">Email: </label>
+          <input type="email" id="email" name="email" />
+        </div>
+        <div class="row">
+          <label for="password">Password: </label>
+          <input type="password" id="password" name="password" />
+        </div>
+        <div class="row">
+          <button type="submit">Login</button>
+        </div>
+      </div>
+    </form>
+  </body>
+</html>
