@@ -24,6 +24,4 @@ Route.get('/', async ({ view }) => {
   return view.render('welcome')
 })
 
-Route.get('/aaa', async ({}) => {
-	return "<h1>aaa</h1>";
-})
+Route.get('/posts/:id', 'PostsController.show')
