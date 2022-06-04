@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Posts List</title>
+    <title>Post</title>
     <meta charset="utf8" />
     <style>
       .article {
@@ -10,19 +10,13 @@
         color: #fff;
         border-radius: 5px;
       }
-
-      .mb-1 {
-        margin-bottom: 5px;
-      }
     </style>
   </head>
 
   <body>
-    @each(post in posts)
-    <div class="article mb-1">
+    <div class="article">
       <h1>{{ post.title }}</h1>
       <p>{{ post.description }}</p>
     </div>
-    @end
   </body>
 </html>

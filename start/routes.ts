@@ -31,5 +31,6 @@ Route.get('/dashboard', async ({view}) => {
 Route.get('/login', 'AuthController.loginShow');
 Route.post('/loginProcess', 'AuthController.login');
 
-Route.get('/posts/:id', 'PostsController.show');
-Route.post('/posts', 'PostsController.store');
+// Route.get('/posts/:id', 'PostsController.show');
+// Route.post('/posts', 'PostsController.store');
+Route.resource('posts', 'PostsController');
