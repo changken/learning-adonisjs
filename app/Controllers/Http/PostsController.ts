@@ -23,7 +23,7 @@ export default class PostsController {
 
     await postModel.save();
 
-    return `<h1>${postModel.$isPersisted}</h1>`;
+    return `<h1>新增狀態: ${postModel.$isPersisted}</h1>`;
 
     // console.log(post.title);
     // console.log(post.description);
@@ -41,9 +41,29 @@ export default class PostsController {
     return view.render('posts/view', { post });
   }
 
-  public async edit({}: HttpContextContract) {}
+  public async edit({view, params}: HttpContextContract) {
+    const post = await Post.find(params.id);
+    return view.render('posts/create', {post});
+  }
 
-  public async update({}: HttpContextContract) {}
+  public async update({request, params}: HttpContextContract) {
+    const post = await request.validate(CreatePostValidator);
 
-  public async destroy({}: HttpContextContract) {}
+    const postModel = await Post.findOrFail(params.id);
+
+    postModel.title = post.title;
+    postModel.description = post.description;
+
+    await postModel.save();
+
+    return `<h1>更新狀態: ${postModel.$isPersisted}</h1>`;
+  }
+
+  public async destroy({params}: HttpContextContract) {
+    const post = await Post.findOrFail(params.id);
+
+    await post.delete();
+
+    return `<h1>刪除狀態: ${post.$isPersisted}</h1>`;
+  }
 }

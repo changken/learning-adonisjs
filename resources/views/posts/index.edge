@@ -22,7 +22,20 @@
     <div class="article mb-1">
       <h1>{{ post.title }}</h1>
       <p>{{ post.description }}</p>
+      <a href="/posts/{{ post.id }}/edit">編輯</a>
+      <form
+        action="/posts/{{ post.id }}?_method=DELETE"
+        method="POST"
+        onsubmit="return deleteCheck()"
+      >
+        <button type="submit">刪除</button>
+      </form>
     </div>
     @end
   </body>
+  <script>
+    function deleteCheck() {
+      return confirm('確定刪除?')
+    }
+  </script>
 </html>

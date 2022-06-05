@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Create Posts</title>
+    <title>{{ post ? 'Edit Post ' + post.id : 'Create Posts' }}</title>
     <meta charset="utf8" />
     <style>
       .app {
@@ -18,15 +18,17 @@
   </head>
 
   <body>
-    <form action="/posts" method="POST">
+    <form action="{{ post ? '/posts/' + post.id + '?_method=PUT' : '/posts' }}" method="POST">
       <div class="app">
         <div class="row">
           <label for="title">Title: </label>
-          <input type="text" id="title" name="title" />
+          <input type="text" id="title" name="title" value="{{ post ? post.title : '' }}" />
         </div>
         <div class="row">
           <label for="description">Description: </label>
-          <textarea rows="5" id="description" name="description"></textarea>
+          <textarea rows="5" id="description" name="description">{{
+            post ? post.description : ''
+          }}</textarea>
         </div>
         <div class="row">
           <button type="submit">Create</button>
